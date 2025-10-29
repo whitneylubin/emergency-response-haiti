@@ -1,0 +1,76 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  CITIZEN
+  RESPONDER
+  ADMIN
+}
+
+enum RequestType {
+  FOOD
+  WATER
+  MEDICAL
+  SHELTER
+  CONNECTIVITY
+  OTHER
+}
+
+enum RequestStatus {
+  NEW
+  IN_REVIEW
+  DISPATCHED
+  RESOLVED
+  REJECTED
+}
+
+enum Source {
+  WEB
+  WHATSAPP
+}
+
+model User {
+  id           String      @id @default(cuid())
+  email        String      @unique
+  passwordHash String
+  name         String?
+  role         Role        @default(CITIZEN)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  assignments  Assignment[]
+}
+
+model Request {
+  id           String        @id @default(cuid())
+  type         RequestType
+  description  String
+  commune      String
+  lat          Float?
+  lng          Float?
+  contactName  String
+  contactPhone String
+  contactEmail String?
+  photoPath    String?
+  status       RequestStatus @default(NEW)
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  publicHash   String        @unique
+  source       Source        @default(WEB)
+  assignment   Assignment?
+}
+
+model Assignment {
+  id          String   @id @default(cuid())
+  requestId   String
+  responderId String
+  note        String?
+  createdAt   DateTime @default(now())
+  request     Request  @relation(fields: [requestId], references: [id])
+  responder   User     @relation(fields: [responderId], references: [id])
+}

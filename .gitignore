@@ -1,0 +1,12 @@
+node_modules
+.next
+.env
+pnpm-lock.yaml
+*.log
+.DS_Store
+public/uploads/*.jpg
+public/uploads/*.png
+public/uploads/*.jpeg
+public/uploads/*.webp
+coverage
+playwright-report
