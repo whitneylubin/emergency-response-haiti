@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  font-family: theme('fontFamily.sans');
+  background-color: #f6f6f6;
+  color: #1a1a1a;
+}
+
+a {
+  color: #0d66d0;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid #0d66d0;
+  outline-offset: 2px;
+}
