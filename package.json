@@ -36,7 +36,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.41.1",
-    "@types/bcryptjs": "^2.4.2",
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "20.11.19",
     "@types/react": "18.2.45",
     "@types/react-dom": "18.2.18",
@@ -44,7 +44,7 @@
     "eslint": "^8.56.0",
     "eslint-config-next": "^14.1.4",
     "husky": "^8.0.3",
-    "lighthouse-ci": "^0.12.2",
+    "lighthouse-ci": "^1.13.1",
     "postcss": "^8.4.33",
     "prisma": "^5.9.1",
     "tailwindcss": "^3.4.1",
